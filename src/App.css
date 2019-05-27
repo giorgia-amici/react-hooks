@@ -11,7 +11,7 @@
   max-width: 400px;
 }
 
-.app-todo--item {
+.app-todo--item, .app-todo--form {
   background: #fff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   padding: 20px 10px;
@@ -21,4 +21,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.app-todo--form input {
+  border: none;
+}
+
+.app-todo--form input:focus {
+  outline: none;
+  
+}
+
+.app-todo--item .todo-item--complete, .app-todo--item .todo-item--remove {
+  cursor: pointer;
+  padding: 4px 8px 4px;
+  margin-right: 8px;
+  border-color: #D8D8D8;
+  border-radius: 3px;
+}
+
+.app-todo--item .todo-item--complete {
+  color: green;
+}
+
+.app-todo--item .todo-item--remove {
+  color: red;
 }
