@@ -43,16 +43,14 @@ function TodoForm({ addTodo }) {
 
 function App() {
 
-    //array destructuring syntax below <3
-    const [todos, setTodos] = useState([
-        {text: 'Book Gym', isCompleted: false},
-        {text: 'Update Calendar', isCompleted: false}
-    ]);
+    const stateFromStorage = JSON.parse(localStorage.getItem('todos'));
+    const [todos, setTodos] = useState(stateFromStorage !== null ? stateFromStorage : []);
 
     const addTodo = text => {
         //use the spread operator to copy the content of the current todo list
         const newTodos = [...todos, {text}];
-        setTodos(newTodos);    
+        setTodos(newTodos); 
+        localStorage.setItem('todos', JSON.stringify(newTodos));   
     }
 
     const completeTodo = index => {
@@ -67,12 +65,18 @@ function App() {
         newTodos.splice(index, 1);
 
         setTodos(newTodos);
+        localStorage.setItem('todos', JSON.stringify(newTodos));   
     }
 
     return (
         <div className='app'>
             <header className='app-header'></header>
-            <p>You have {todos.length} todos in your list</p>
+       {/*     {todos.length ?
+                <p>You have { todos } todos in your list</p>
+                :
+                <p>Start typing to populate your list</p>
+            }*/}
+
             <section className='app-todo'>
                 {todos.map((todo, index) => (
                     <Todo 

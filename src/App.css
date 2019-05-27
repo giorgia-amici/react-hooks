@@ -29,7 +29,6 @@
 
 .app-todo--form input:focus {
   outline: none;
-  
 }
 
 .app-todo--item .todo-item--complete, .app-todo--item .todo-item--remove {
